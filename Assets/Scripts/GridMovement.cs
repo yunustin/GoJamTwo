@@ -22,7 +22,6 @@ public class GridMovement : MonoBehaviour
         targetPosition = transform.position;
         targetRotation = transform.rotation;
 
-        // Initialize current tile position based on the starting position
         currentTilePosition = GetTilePosition(transform.position);
     }
 
@@ -32,9 +31,10 @@ public class GridMovement : MonoBehaviour
         SmoothMove();
         SmoothRotate();
 
-        // Update tile position in each frame
         currentTilePosition = GetTilePosition(transform.position);
     }
+
+    //MOVEMENTSCRIPTS
 
     void HandleInput()
     {

@@ -4,7 +4,7 @@ public class PlayerItemCheck : MonoBehaviour
 {
     public static PlayerItemCheck instance;
 
-    private bool itemPickedUp = false; // Oyuncunun elinde item olup olmadýðýný tutar
+    private bool itemPickedUp = false;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class PlayerItemCheck : MonoBehaviour
         itemPickedUp = pickedUp;
     }
 
-    public bool HasItem() // Eksik olan metod eklendi
+    public bool HasItem()
     {
         return itemPickedUp;
     }

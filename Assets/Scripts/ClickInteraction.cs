@@ -4,39 +4,31 @@ using UnityEngine;
 
 public class ClickInteraction : MonoBehaviour
 {
-    public Material highlightMaterial; // Inspector'dan atanacak materyal
+    public Material highlightMaterial;
     private Material originalMaterial;
     private Renderer objRenderer;
     public GameObject character;
-    private GridMovement gridMov; // Burada doðru isimlendirilmiþ
-    public Vector2Int objectTilePosition; // Her obje için belirlenebilir tile
+    private GridMovement gridMov;
+    public Vector2Int objectTilePosition;
 
-    private PickUpItem pickUpItemScript; // PickUpItem scriptini tutacak referans
+    private PickUpItem pickUpItemScript;
 
     void Start()
     {
-        // GridMovement scriptini alýyoruz ve null kontrolü yapýyoruz
         if (character != null)
         {
             gridMov = character.GetComponent<GridMovement>();
         }
 
         objRenderer = GetComponent<Renderer>();
-
         if (objRenderer != null)
         {
             originalMaterial = objRenderer.material;
         }
 
-        // PickUpItem ve ItemPutAway scriptlerine eriþim
         pickUpItemScript = GetComponent<PickUpItem>();
 
-        // gridMov null ise log yazýlabilir
-        if (gridMov != null)
-        {
-            Debug.Log(gridMov.currentTilePosition);
-        }
-        else
+        if (gridMov == null)
         {
             Debug.LogWarning("GridMovement component not found on the character.");
         }
@@ -44,25 +36,28 @@ public class ClickInteraction : MonoBehaviour
 
     void OnMouseDown()
     {
-        // Null kontrolü eklenmiþ
-        if (gridMov != null && PlayerItemCheck.instance.CanPickUpItem() && gridMov.currentTilePosition == objectTilePosition)
+        if (gridMov != null && gridMov.currentTilePosition == objectTilePosition)
         {
-            Debug.Log("Objeye týkladýn: " + gameObject.name);
-
-            // Objeyi aldýktan sonra PlayerItemCheck'e bildir
-            PlayerItemCheck.instance.SetItemPickedUp(true);
-
-            // PickUpItem scriptine objeyi ilet
             if (pickUpItemScript != null)
             {
-                pickUpItemScript.PickUpThisItem(gameObject); // PickUpItem scriptindeki metodu çaðýr
+                if (!PlayerItemCheck.instance.HasItem()) // Eðer elimizde item yoksa al
+                {
+                    Debug.Log("Objeye týkladýn: " + gameObject.name);
+                    PlayerItemCheck.instance.SetItemPickedUp(true);
+                    pickUpItemScript.PickUpThisItem(gameObject);
+                }
+                else if (pickUpItemScript.IsPickedUp()) // Eðer elimizdeki item buysa geri býrak
+                {
+                    Debug.Log("Eldeki item býrakýlýyor.");
+                    pickUpItemScript.PutDownItem();
+                    PlayerItemCheck.instance.SetItemPickedUp(false);
+                }
             }
         }
     }
 
     void OnMouseEnter()
     {
-        // GridMovement script'inden tile bilgilerini kontrol et
         if (gridMov != null && gridMov.currentTilePosition == objectTilePosition)
         {
             if (highlightMaterial != null && objRenderer != null)

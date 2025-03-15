@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerItemCheck : MonoBehaviour
 {
-    public static PlayerItemCheck instance; // Singleton kullanarak eriþimi kolaylaþtýrýyoruz
+    public static PlayerItemCheck instance;
 
-    public bool ElindeObjeVar = false; // Oyuncunun elinde obje var mý?
+    private bool itemPickedUp = false; // Oyuncunun elinde item olup olmadýðýný tutar
 
-    void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -20,15 +18,13 @@ public class PlayerItemCheck : MonoBehaviour
         }
     }
 
-    // Elinde obje var mý kontrol et
-    public bool CanPickUpItem()
-    {
-        return !ElindeObjeVar;
-    }
-
-    // Objeyi aldýðýnda
     public void SetItemPickedUp(bool pickedUp)
     {
-        ElindeObjeVar = pickedUp;
+        itemPickedUp = pickedUp;
+    }
+
+    public bool HasItem() // Eksik olan metod eklendi
+    {
+        return itemPickedUp;
     }
 }

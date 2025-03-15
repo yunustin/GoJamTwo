@@ -15,7 +15,7 @@ public class ClickInteraction : MonoBehaviour
     public Image flashEffect;
 
     private int currentCamIndex = 0;
-    private List<int> camSequence = new List<int> { 1, 2, 2, 3, 3, 4 , 5}; // Sadece 1-2-3-4 sýrayla geçilecek
+    private List<int> camSequence = new List<int> { 1, 2, 3, 4 ,5 ,6 ,7 ,8 ,9 ,10  }; // Sadece 1-2-3-4 sýrayla geçilecek
 
     public Vector2Int objectTilePosition;
     private PickUpItem pickUpItemScript;

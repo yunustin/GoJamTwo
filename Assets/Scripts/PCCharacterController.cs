@@ -4,9 +4,9 @@ public class CharacterController2D : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
-    public Transform lantern; // Fenerin Transform bileþeni
+    public Transform lantern;
     public Transform canbari;
-    public Vector2 lanternOffset = new Vector2(0.5f, 0.0f); // Fenerin karaktere göre pozisyonu
+    public Vector2 lanternOffset = new Vector2(0.5f, 0.0f);
     public Vector2 canbariOffset = new Vector2(0f, 0f);
 
     private Animator animator;
@@ -24,6 +24,8 @@ public class CharacterController2D : MonoBehaviour
 
     void Update()
     {
+        if (!gameObject.activeSelf) return; // Eðer karakter aktif deðilse hareket etme
+
         float moveDirection = Input.GetAxisRaw("Horizontal");
         bool isJumped = Input.GetKeyDown(KeyCode.W);
         bool isSpeaking = Input.GetKey(KeyCode.LeftShift);
@@ -47,25 +49,21 @@ public class CharacterController2D : MonoBehaviour
             bool facingLeft = moveDirection < 0;
             spriteRenderer.flipX = facingLeft;
 
-            // Fenerin yönünü ve pozisyonunu ayarla
+            // Fener ve canbarý yönünü ayarla
             if (lantern != null)
             {
-                // Ölçeði ayarla (Aynalama için)
                 Vector3 scale = lantern.localScale;
                 scale.x = facingLeft ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
                 lantern.localScale = scale;
-
-                // Pozisyonu ayarla
                 lantern.localPosition = new Vector3(facingLeft ? -lanternOffset.x : lanternOffset.x, lanternOffset.y, 0);
             }
+
             if (canbari != null)
             {
                 Vector3 scale = canbari.localScale;
                 scale.x = facingLeft ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
                 canbari.localScale = scale;
-
                 canbari.localPosition = new Vector3(facingLeft ? -canbariOffset.x : canbariOffset.x, canbariOffset.y, 0);
-
             }
         }
     }

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Floor
+  m_Name: Door
   m_Shader: {fileID: -6465566751694194690, guid: 3b783337abaff494fa17179394c675d5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -118,5 +118,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.690566, g: 0.5198789, b: 0.61604065, a: 0}
+    - _MainColor: {r: 0.5966749, g: 0.67212886, b: 0.6830188, a: 0}
   m_BuildTextureStacks: []

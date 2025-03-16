@@ -1106,20 +1106,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 71f21a9a4510ab243bb7a7b8a31cae89, type: 3}
   m_PrefabInstance: {fileID: 659517575}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &338253407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338253406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3886fb3bba0118747b39e06dc1a3c97f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPosition: {fileID: 1341388752}
-  moveSpeed: 5
 --- !u!114 &338253408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: 19ffa069240d2f74c90788d860ed7f8f, type: 2}
-  character: {fileID: 1433980988}
+  character: {fileID: 1872403126}
   flashEffect: {fileID: 0}
   objectTilePosition: {x: 2, y: 1}
 --- !u!65 &338253412
@@ -1628,7 +1614,7 @@ GameObject:
   - component: {fileID: 605091121}
   m_Layer: 0
   m_Name: BlueCapsule
-  m_TagString: Untagged
+  m_TagString: Trambolin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1849,7 +1835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71f21a9a4510ab243bb7a7b8a31cae89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.902
+      value: 1.457
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71f21a9a4510ab243bb7a7b8a31cae89, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1883,6 +1869,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 71f21a9a4510ab243bb7a7b8a31cae89, type: 3}
+      propertyPath: m_TagString
+      value: Scanner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1890,9 +1880,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71f21a9a4510ab243bb7a7b8a31cae89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 338253408}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71f21a9a4510ab243bb7a7b8a31cae89, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 338253407}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71f21a9a4510ab243bb7a7b8a31cae89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 338253412}
@@ -3890,7 +3877,7 @@ GameObject:
   - component: {fileID: 1365136614}
   m_Layer: 0
   m_Name: BlueSphere
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4479,7 +4466,7 @@ GameObject:
   - component: {fileID: 1552370660}
   m_Layer: 0
   m_Name: BlueCube
-  m_TagString: Untagged
+  m_TagString: Kukla
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5367,6 +5354,7 @@ GameObject:
   - component: {fileID: 1872403127}
   - component: {fileID: 1872403128}
   - component: {fileID: 1872403129}
+  - component: {fileID: 1872403130}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -5420,6 +5408,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f61221ec28af448810b1a2add3c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1872403130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872403126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6519c0e77e944794eb4478214a29e2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashlight: 0
+  kukla: 0
+  trambolin: 0
+  "k\u0131rba\xE7": 0
+  yiyecek: 0
+  "kar\u0131": 0
+  tarak: 0
+  "\xE7i\xE7ek": 0
+  sigara: 0
 --- !u!1001 &1888133135
 PrefabInstance:
   m_ObjectHideFlags: 0

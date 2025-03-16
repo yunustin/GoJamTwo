@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using TMPro;
 
 public class VideoController : MonoBehaviour
 {
     public VideoPlayer videoPlayer; // VideoPlayer bileþeni
     public GameObject menuUI; // Ana menü butonlarý
+    public AudioSource menuMusic; // Ana menü müziði
+    public TypewriterEffect typewriterEffect; // Daktilo efekti script'i
 
     void Start()
     {
@@ -33,16 +34,33 @@ public class VideoController : MonoBehaviour
 
     void OnVideoFinished(VideoPlayer vp)
     {
+        // Video bittiðinde daktilo efekti baþlat
         videoPlayer.gameObject.SetActive(false); // Video objesini tamamen kapat
         ShowMenu(); // Menü butonlarýný aç
+
+        if (typewriterEffect != null)
+        {
+            typewriterEffect.StartTypingAfterVideo();
+        }
+
+        // Müzik çalmaya baþla
+        if (menuMusic != null && !menuMusic.isPlaying)
+        {
+            menuMusic.Play(); // Müzik çal
+        }
     }
 
     void SkipVideo()
     {
         if (videoPlayer.isPlaying)
         {
-            videoPlayer.Stop();
-            ShowMenu();
+            videoPlayer.Stop(); // Video durdurulur
+            ShowMenu(); // Menü butonlarýný göster
+
+            if (typewriterEffect != null)
+            {
+                typewriterEffect.StartTypingAfterVideo(); // Daktilo efekti baþlatýlýr
+            }
         }
     }
 

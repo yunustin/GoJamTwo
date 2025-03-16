@@ -58,43 +58,52 @@ public class ClickInteraction : MonoBehaviour
     }
 
     void OnMouseDown()
+{
+    if (myCharacter != null && myCharacter.currentTilePosition == objectTilePosition)
     {
-        if (myCharacter != null && myCharacter.currentTilePosition == objectTilePosition)
+        // Eðer elimde item varsa
+        if (PlayerItemCheck.instance.HasItem())
         {
-            if (pickUpItemScript != null)
-            {
-                if (!PlayerItemCheck.instance.HasItem()) // Eðer elimizde item yoksa al
+                // Scanner tag'li objeye týklanmýþsa
+                if (CompareTag("Scanner"))
                 {
-                    Debug.Log("Objeye týkladýn: " + gameObject.name);
-                    PlayerItemCheck.instance.SetItemPickedUp(true);
-                    pickUpItemScript.PickUpThisItem(gameObject);
-                }
-                else if (pickUpItemScript.IsPickedUp()) // Eðer elimizdeki item buysa geri býrak
-                {
-                    Debug.Log("Eldeki item býrakýlýyor.");
-                    pickUpItemScript.PutDownItem();
-                    PlayerItemCheck.instance.SetItemPickedUp(false);
+                    Debug.Log("Týklanan objenin tag'ý: " + gameObject.tag);
                 }
             }
-
-            if (CompareTag("Bilgisayar"))
+        
+        if (pickUpItemScript != null)
+        {
+            if (!PlayerItemCheck.instance.HasItem()) // Eðer elimizde item yoksa al
             {
-                isInTwoD = true;
-                StartCoroutine(FlashEffect());
-
-                // Kamerayý sýradaki kamera ile deðiþtir
-                camswitcher.CamSwitch(camSequence[currentCamIndex]);
-                Debug.Log("Geçilen kamera: " + camSequence[currentCamIndex]);
-
-                // Bir sonraki adýma geç, eðer sona geldiysek baþa dön
-                currentCamIndex = (currentCamIndex + 1) % camSequence.Count;
-
-                Debug.Log("Bilgisayara týkladýn!");
-                ComputerGame();
+                Debug.Log("Objeye týkladýn: " + gameObject.name);
+                PlayerItemCheck.instance.SetItemPickedUp(true);
+                pickUpItemScript.PickUpThisItem(gameObject);
+            }
+            else if (pickUpItemScript.IsPickedUp()) // Eðer elimizdeki item buysa geri býrak
+            {
+                Debug.Log("Eldeki item býrakýlýyor.");
+                pickUpItemScript.PutDownItem();
+                PlayerItemCheck.instance.SetItemPickedUp(false);
             }
         }
-    }
 
+        if (CompareTag("Bilgisayar"))
+        {
+            isInTwoD = true;
+            StartCoroutine(FlashEffect());
+
+            // Kamerayý sýradaki kamera ile deðiþtir
+            camswitcher.CamSwitch(camSequence[currentCamIndex]);
+            Debug.Log("Geçilen kamera: " + camSequence[currentCamIndex]);
+
+            // Bir sonraki adýma geç, eðer sona geldiysek baþa dön
+            currentCamIndex = (currentCamIndex + 1) % camSequence.Count;
+
+            Debug.Log("Bilgisayara týkladýn!");
+            ComputerGame();
+        }
+    }
+}
     void OnMouseEnter()
     {
         if (myCharacter != null && myCharacter.currentTilePosition == objectTilePosition)
